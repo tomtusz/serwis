@@ -16,6 +16,7 @@
   </head>
   <body>
 
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -24,22 +25,23 @@
 
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-					</button> <a class="navbar-brand" href="#">Dodaj zgoszenie</a>
+					</button> <a class="navbar-brand" href="{{action('OrderController@create')}}">Dodaj zgoszenie</a>
+          <a class="navbar-brand" href="{{action('OrderController@index')}}">Lista zgłoszeń</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-					<form class="navbar-form navbar-left" role="search">
+          {!! Form::open(['url'=>'order/search','method'=>'POST','class'=>'navbar-form navbar-left', 'role'=>'search']) !!}
+
 						<div class="form-group">
-							<input class="form-control" type="text" placeholder="Wpisz id zgłoszenia...">
+              {!! Form::text('uniqid', null, ['placeholder' => 'Wpisz Nr zgłoszenia..','class'=>'form-control']) !!}
 						</div>
-						<button type="submit" class="btn btn-default">
-							Szukaj
-						</button>
-					</form>
+            {!! Form::submit('Szukaj', ['class'=>'btn btn-default']) !!}
+
+					{!! Form::close() !!}
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="#">Administracja</a>
+							<a href="{{action('AdminparamsController@admin')}}">Administracja</a>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Urzytkownik<strong class="caret"></strong></a>
@@ -63,13 +65,15 @@
 	<div  id="content" class="row">
       @yield('content')
   </div>
-	<div class="row">
-		<div class="col-md-12">
-			<p>
-				STOPKAstopkaSTOPKAstopkaSTOPKAstopkaSTOPKAstopkaSTOPKAstopkaSTOPKAstopkaSTOPKAstopkaSTOPKAstopkaSTOPKAstopkaSTOPKAstopka
-			</p>
-		</div>
-	</div>
+</div>
+
+
+<div class="footer">
+  <div class="container">
+    <p>
+      STOPKAstopkaSTOPKAstopkaSTOPKAstopkaSTOPKAstopkaSTOPKAstopkaSTOPKAstopkaSTOPKAstopkaSTOPKAstopkaSTOPKAstopkaSTOPKAstopka
+    </p>
+  </div>
 </div>
 
     <script src="{{ URL::asset('js/jquery.min.js') }}"></script>

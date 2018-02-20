@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Status;
+use App\Customer;
 use Illuminate\Http\Request;
-use App\Http\Requests\CreateStatusRequest;
+use App\Http\Requests\CreateCustomerRequest;
 
-class StatusController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class StatusController extends Controller
      */
     public function index()
     {
-      $status = Status::orderBy('order', 'asc')->get();
-      return view('status.index')->with('status',$status);
+      $customers = Customer::orderBy('surname', 'asc')->get();
+      return view('customer.index')->with('customers',$customers);  //
     }
 
     /**
@@ -26,8 +26,7 @@ class StatusController extends Controller
      */
     public function create()
     {
-
-      return view('status.create')->with('count',Status::count());;
+      return view('customer.create');
     }
 
     /**
@@ -36,19 +35,19 @@ class StatusController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateStatusRequest  $request)
+    public function store(CreateCustomerRequest $request)
     {
-      Status::create($request->all());
-      return redirect('status');
+      Customer::create($request->all());
+      return redirect('customer');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Status  $status
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Status $status)
+    public function show($id)
     {
         //
     }
@@ -56,10 +55,10 @@ class StatusController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Status  $status
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Status $status)
+    public function edit($id)
     {
         //
     }
@@ -68,10 +67,10 @@ class StatusController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Status  $status
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Status $status)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -79,10 +78,10 @@ class StatusController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Status  $status
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Status $status)
+    public function destroy($id)
     {
         //
     }

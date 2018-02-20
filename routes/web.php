@@ -17,4 +17,10 @@ Route::get('/', function () {
 
 Route::resource('brand', 'BrandController');
 Route::resource('type', 'TypeController');
-Route::resource('ststus', 'StatusController');
+Route::resource('status', 'StatusController');
+Route::resource('order', 'OrderController');
+Route::resource('customer', 'CustomerController');
+Route::post('order/search', 'OrderController@search');
+Route::get('order/{uniqid}/pdf', 'OrderController@pdfDownload')->name('Zgłoszenie');
+Route::get('order/{order}/status/{status}', 'OrderController@statusChange');
+Route::get('adminparams', 'AdminparamsController@admin');

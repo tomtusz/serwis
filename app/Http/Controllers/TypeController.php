@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Type;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateTypeRequest;
 
 class TypeController extends Controller
 {
@@ -14,7 +15,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+      $types = Type::orderBy('name', 'asc')->get();
+      return view('type.index')->with('types',$types);
     }
 
     /**
@@ -24,7 +26,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+      return view('type.create');
     }
 
     /**
@@ -33,9 +35,10 @@ class TypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateTypeRequest  $request)
     {
-        //
+      Type::create($request->all());
+      return redirect('type');
     }
 
     /**

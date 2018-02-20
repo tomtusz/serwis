@@ -38,7 +38,7 @@ class BrandController extends Controller
     public function store(CreateBrandRequest $request)
     {
       Brand::create($request->all());
-      return redirect('brand');
+      return redirect('adminparams');
     }
 
     /**

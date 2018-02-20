@@ -4,9 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends Model
+class Customer extends Model
 {
-  protected $fillable=['name','color','order'];
+  protected $fillable=[
+    'name',
+    'surname',
+    'email',
+    'phone'];
 
   public function orders()
     {
