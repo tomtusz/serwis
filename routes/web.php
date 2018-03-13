@@ -24,3 +24,4 @@ Route::post('order/search', 'OrderController@search');
 Route::get('order/{uniqid}/pdf', 'OrderController@pdfDownload')->name('Zgłoszenie');
 Route::get('order/{order}/status/{status}', 'OrderController@statusChange');
 Route::get('adminparams', 'AdminparamsController@admin');
+Route::get('customer/{id}/orders', 'CustomerController@customerOrsers')->name('Zgłoszenie');

@@ -6,6 +6,7 @@ use App\Order;
 use App\Type;
 use App\Brand;
 use App\Status;
+use App\Customer;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateOrderRequest;
 use App\Http\Requests\SearchOrderRequest;
@@ -23,7 +24,9 @@ class OrderController extends Controller
     {
       $order = Order::orderBy('created_at', 'desc')->get();
       $statuses = Status::orderBy('order', 'asc')->get();
-      return view('order.index')->with(compact('order','statuses'));
+      $types = Type::orderBy('name', 'asc')->get();
+
+      return view('order.index')->with(compact('order','statuses','types'));
     }
 
     /**
@@ -36,8 +39,9 @@ class OrderController extends Controller
       $types = Type::orderBy('name', 'asc')->pluck('name', 'id');
       $brands = Brand::orderBy('name', 'asc')->pluck('name', 'id');
       $status = Status::orderBy('order', 'asc')->pluck('name', 'id');
+      $customers = Customer::orderBy('surname', 'asc')->get();
       $uniqid = uniqid();
-      return view('order.create')->with(compact('types', 'brands', 'uniqid','status'));
+      return view('order.create')->with(compact('types', 'brands', 'uniqid','status','customers'));
     }
 
     /**
@@ -76,7 +80,8 @@ class OrderController extends Controller
       $brands = Brand::orderBy('name', 'asc')->pluck('name', 'id');
       $order = Order::where('uniqid', '=', $uniqid)->firstOrFail();
       $status = Status::orderBy('order', 'asc')->pluck('name', 'id');
-      return view('order.edit')->with(compact('types', 'brands', 'order','status'));  //
+      $customers = Customer::orderBy('surname', 'asc')->get();
+      return view('order.edit')->with(compact('types', 'brands', 'order','status','customers'));  //
     }
 
     /**

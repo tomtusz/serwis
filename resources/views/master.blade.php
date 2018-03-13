@@ -26,20 +26,24 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 					</button> <a class="navbar-brand" href="{{action('OrderController@create')}}">Dodaj zgoszenie</a>
-          <a class="navbar-brand" href="{{action('OrderController@index')}}">Lista zgłoszeń</a>
+          <a class="navbar-brand" href="{{action('OrderController@index')}}">Zgłoszenia</a>
+          <a class="navbar-brand" href="{{action('CustomerController@index')}}">Kliencji</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-          {!! Form::open(['url'=>'order/search','method'=>'POST','class'=>'navbar-form navbar-left', 'role'=>'search']) !!}
 
-						<div class="form-group">
-              {!! Form::text('uniqid', null, ['placeholder' => 'Wpisz Nr zgłoszenia..','class'=>'form-control']) !!}
-						</div>
-            {!! Form::submit('Szukaj', ['class'=>'btn btn-default']) !!}
-
-					{!! Form::close() !!}
 					<ul class="nav navbar-nav navbar-right">
+            <li>
+              {!! Form::open(['url'=>'order/search','method'=>'POST','class'=>'navbar-form navbar-left', 'role'=>'search']) !!}
+
+    						<div class="form-group">
+                  {!! Form::text('uniqid', null, ['placeholder' => 'Wpisz Nr zgłoszenia..','class'=>'form-control']) !!}
+    						</div>
+                {!! Form::submit('Szukaj', ['class'=>'btn btn-default']) !!}
+
+    					{!! Form::close() !!}
+            </li>
 						<li>
 							<a href="{{action('AdminparamsController@admin')}}">Administracja</a>
 						</li>
@@ -63,7 +67,9 @@
 		</div>
 	</div>
 	<div  id="content" class="row">
+    <div class="col-md-12">
       @yield('content')
+    </div>
   </div>
 </div>
 

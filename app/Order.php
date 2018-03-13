@@ -8,7 +8,7 @@ class Order extends Model
 {
   protected $fillable=[
     'uniqid',
-    'coustomer_id',
+    'customer_id',
     'added_at',
     'type_id',
     'brand_id',
@@ -38,9 +38,9 @@ class Order extends Model
   {
     return $this->belongsTo('App\Status');
   }
-  public function coustomer()
+  public function customer()
   {
-    return $this->belongsTo('App\Coustomer');
+    return $this->belongsTo('App\Customer');
   }
 
 }

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Order;
+use App\Type;
+use App\Brand;
+use App\Status;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCustomerRequest;
 
@@ -85,4 +89,19 @@ class CustomerController extends Controller
     {
         //
     }
+
+    /** -------------------------By me
+     *
+     *     show all customer's orders
+     */
+    public function customerOrsers($id)
+    {
+      $order = Order::where('customer_id', '=', $id)->orderBy('created_at', 'desc')->get();
+      $statuses = Status::orderBy('order', 'asc')->get();
+      $types = Type::orderBy('name', 'asc')->get();
+
+      return view('order.index')->with(compact('order','statuses','types'));
+    }
+
+
 }

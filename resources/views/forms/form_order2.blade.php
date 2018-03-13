@@ -1,3 +1,4 @@
+@include('order.modalCustomer')
 <h3>Zgłoszenie Nr:
 @if(! empty($order))
   {{$order->uniqid}} z dnia
@@ -14,7 +15,17 @@
 <div class="row">
   <div class="col-md-4">
     {{ Form::hidden('uniqid', ( ! empty($order) ? $order->uniqid : $uniqid)) }}
-
+    {{ Form::hidden('customer_id', ( ! empty($order) ? $order->customer_id : ''), ['id'=>'customerId'])}}
+    <p>
+      {!! Form::label('customer_id','Klient:') !!}</i>
+      <input id="customerName" type="text" name="name" value="{{( ! empty($order->customer) ? $order->customer->name.' '.$order->customer->surname : 'brak zgody')}}" disabled>
+      <button type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModalCustomer">
+        <span class="glyphicon glyphicon-user"></span>
+      </button>
+      <button type="button" class="btn btn-xs btn-info" onclick="customerNoData()">
+        <span class="glyphicon glyphicon-remove"></span>
+      </button>
+    </p>
     <p>
       <i>{!! Form::label('type_id','Rodzaj sprzętu:') !!}</i><br>
       {!! Form::select('type_id', $types, null, ['placeholder' => 'Rodzaj sprzętu...','class'=>'form-control']) !!}

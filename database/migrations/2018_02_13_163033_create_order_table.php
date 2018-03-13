@@ -17,7 +17,7 @@ class CreateOrderTable extends Migration
           $table->increments('id');
           $table->integer('uniqid');
           $table->date('added_at');
-          $table->integer('coustomer_id')->nullable();
+          $table->integer('customer_id')->nullable();
           $table->integer('type_id');
           $table->integer('brand_id');
           $table->string('model')->nullable();

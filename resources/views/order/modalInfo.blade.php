@@ -6,7 +6,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Informacje</h4>
+        <h4 class="modal-title">
+          {{( ! empty($order->customer) ? 'Klient - '.$order->customer->name.' '.$order->customer->surname : 'Klient - brak zgody')}}
+        </h4>
       </div>
       <div class="modal-body">
         <div class="panel panel-default">
