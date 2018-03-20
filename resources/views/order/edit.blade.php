@@ -5,6 +5,7 @@
         <div class="card">
             <div class="panel-body">
               @include('forms.form_errors')
+              @include('order.modalCustomer')
             <!-- Formularz -->
               {!! Form::model($order, ['method'=>'PATCH','class'=>'form-forizontal','action'=>['OrderController@update', $order->id]]) !!}
                 @include('forms.form_order2')

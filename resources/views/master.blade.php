@@ -13,6 +13,8 @@
     <link href="{{ URL::asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ URL::asset('css/style.css')}}" rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
   </head>
   <body>
 
@@ -85,5 +87,6 @@
     <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ URL::asset('js/scripts.js') }}"></script>
+    <script src="{{ URL::asset('js/customer.addedit.js') }}"></script>
   </body>
 </html>

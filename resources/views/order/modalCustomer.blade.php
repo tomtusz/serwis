@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div id="myModalCustomer" class="modal fade d-example-modal-lg" role="dialog">
+<div id="myModalCustomer" class="modal fade d-example-modal-lg" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
@@ -11,6 +11,9 @@
       <div class="modal-body">
         <div class="panel panel-default">
           <input type="text" id="serchCustomerInput" onkeyup="findInTable('#custonerTable tbody tr', this)" placeholder="Szukaj po klienta..">
+          <button type="button" class="btn btn-xs btn-info" onclick="$('#addNewCostomerTr').show();">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
           <div class="panel-body pre-scrollable">
             <table id="custonerTable" class="table table-striped">
       				<thead>
@@ -20,6 +23,25 @@
     							<th>e-mail</th>
     							<th>Tel.</th>
     							<th>Wybierz</th>
+                </tr>
+                <tr id="addNewCostomerTr" style="display: none">
+                  <form class="form-forizontal" action="" method="post" accept-charset="UTF-8">
+                    <th>
+                      <input id="tokenAdd" type="text" value="{{ csrf_token() }}" hidden>
+                      <input id="nameAdd" class="form-control input-sm" type="text" name="" value="">
+                    </th>
+                    <th><input id="surnameAdd" class="form-control input-sm" type="text" name="" value=""></th>
+      							<th><input id="email" class="form-control input-sm" type="email" name="" value=""></th>
+      							<th><input id="phone" class="form-control input-sm" type="text" name="" value=""></th>
+      							<th>
+                      <button id="addCustomer" type="button" class="btn btn-xs btn-info">
+                        <span class="glyphicon glyphicon-floppy-save"></span>
+                      </button>
+                      <button id="cancel" type="button" class="btn btn-xs btn-info" onclick="$('#addNewCostomerTr').hide();">
+                        <span class="glyphicon glyphicon-remove"></span>
+                      </button>
+                    <th>
+                  </form>
                 </tr>
              </thead>
              <tbody>

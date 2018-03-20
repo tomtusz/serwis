@@ -16,6 +16,9 @@ function orderIndexTableChange(element,td ) {
 // ---------------- end order index
 
 
+
+
+
 // ----------- zmiana klienta z modala
 function customerChange(custoner, customerName) {
   //console.log(custoner);

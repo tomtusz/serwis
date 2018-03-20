@@ -3,7 +3,7 @@
   <div class="row">
 		<div class="col-md-12">
       @include('forms.form_errors')
-      <h3 class="text-left">Lista zgłoszeń</h3>
+      <h3 class="text-left">{{$header}}</h3>
       @include('forms.form_index_order_filtr')
     </div>
   </div>

@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/allcustomers','CustomerController@allCustomers')->name('customer.all.json');
+Route::post('/custonernew','CustomerController@addNewAjax')->name('customer.new.ajax');
 Route::resource('brand', 'BrandController');
 Route::resource('type', 'TypeController');
 Route::resource('status', 'StatusController');

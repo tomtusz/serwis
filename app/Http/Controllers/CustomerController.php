@@ -7,6 +7,7 @@ use App\Order;
 use App\Type;
 use App\Brand;
 use App\Status;
+use Response;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCustomerRequest;
 
@@ -90,8 +91,30 @@ class CustomerController extends Controller
         //
     }
 
-    /** -------------------------By me
-     *
+    // -------------------------By me
+
+
+
+    /** -------------------------
+     *     all customers for angular and other in jason
+     */
+
+    public function allCustomers()
+    {
+      $customers = Customer::orderBy('surname', 'asc')->get();
+      return $customers;
+    }
+    /** -------------------------
+     *     add new - ajax
+     */
+
+    public function addNewAjax(CreateCustomerRequest $request)
+    {
+      $customer = Customer::create($request->all());
+      //$customer = $request->all();
+      return Response::json($customer);
+    }
+    /** -------------------------
      *     show all customer's orders
      */
     public function customerOrsers($id)
@@ -99,8 +122,9 @@ class CustomerController extends Controller
       $order = Order::where('customer_id', '=', $id)->orderBy('created_at', 'desc')->get();
       $statuses = Status::orderBy('order', 'asc')->get();
       $types = Type::orderBy('name', 'asc')->get();
-
-      return view('order.index')->with(compact('order','statuses','types'));
+      $customer = Customer::where('id', '=', $id)->firstOrFail();
+      $header = $customer->name.' '.$customer->surname.' - zgłoszenia:';
+      return view('order.index')->with(compact('order','statuses','types','header'));
     }
 
 

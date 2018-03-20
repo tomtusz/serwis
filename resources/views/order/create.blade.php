@@ -4,9 +4,10 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="panel-body">
         @include('forms.form_errors')
+        @include('order.modalCustomer')
       <!-- Formularz -->
         {!! Form::open(['url'=>'order','class'=>'form-forizontal']) !!}
-        
+
 
           @include('forms.form_order2',['buttonText'=>'Dodaj zgloszenie'])
 

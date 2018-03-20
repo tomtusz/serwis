@@ -1,4 +1,4 @@
-@include('order.modalCustomer')
+
 <h3>Zgłoszenie Nr:
 @if(! empty($order))
   {{$order->uniqid}} z dnia

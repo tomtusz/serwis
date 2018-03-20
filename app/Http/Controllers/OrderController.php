@@ -25,8 +25,9 @@ class OrderController extends Controller
       $order = Order::orderBy('created_at', 'desc')->get();
       $statuses = Status::orderBy('order', 'asc')->get();
       $types = Type::orderBy('name', 'asc')->get();
+      $header = 'Lista zgłoszeń:';
 
-      return view('order.index')->with(compact('order','statuses','types'));
+      return view('order.index')->with(compact('order','statuses','types','header'));
     }
 
     /**

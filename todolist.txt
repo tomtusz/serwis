@@ -1,0 +1,20 @@
+-----------
+dodawanie zamówienia:
+ukrywanie lini nowego klienta przy zamknięciu modala bez zapisania nowego
+
+$('#myModal').on('hidden.bs.modal', function () {
+    // do something…
+})
+
+-----------
+Szyfrowanie danych osobowych składowanych w bazie
+
+coś czytałem o kluczu szyfrującym, artisan cośtam...
+
+-----------
+Rozdzielić pliki java na poszczególne strony
+
+-----------
+Klienci modal ajax wyświetlanie błędów
+
+-----------
